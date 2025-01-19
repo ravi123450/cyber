@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-743ddji6ngod1i&162mmeyyus5m*mouu!)*(7y-=+0e$u14!$m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['cyber-threat-detection.onrender.com', '127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -119,13 +120,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+# Static files configuration
+STATIC_URL = '/static/'  # Corrected to include a leading '/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets/static')]  # Include additional static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Location where `collectstatic` will gather files
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'assets/static')]
+# Media files configuration
+MEDIA_URL = '/media/'  # Media file URL prefix
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory to store uploaded media files
+
+# Django-Heroku settings (for production)
+import django_heroku
 django_heroku.settings(locals())
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_SKIP_COMPRESS_EXTENSIONS = {".map"}
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -134,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cybersentinel04@gmail.com'
-EMAIL_HOST_PASSWORD = 'zyqhnfeoqhbpbnxu '
+EMAIL_HOST_USER = 'humanaibeing@gmail.com'
+EMAIL_HOST_PASSWORD = 'wdgurwninqsdecqx'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
