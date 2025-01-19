@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>cyber security</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="{% static 'user/img/hacker.png' %}" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'user/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'user/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'user/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet" />
+    
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'user/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Template Stylesheet -->
+    <link href="{% static 'user/css/style.css' %}" rel="stylesheet">
+    <style>
+        .hero-header {
+            background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(../img/bg1.avif);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        
+        
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"><i class="fa fa-user-secret" aria-hidden="true"></i> cyber security</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="{% url 'user_dashboard' %}" class="nav-item nav-link active">Dashboard</a>
+                        <a href="{% url 'user_profile' %}" class="nav-item nav-link ">My Profile</a>
+                    </div>
+                    <a href="{% url 'log_out' %}" class="btn btn-primary py-2 px-4">Logout</a>
+                </div>
+            </nav>
+            
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <!-- Navbar & Hero End -->
+        <div class="container mt-5 p-5" style="background-color:#f3f3f3;">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="mb-4">Cybersecurity Input Fields</h1>
+                </div>
+                <div class="col-md-4">
+                    <h2 style="text-decoration:underline;" class="text-center">Attack Type <i class="fa fa-arrow-down" aria-hidden="true" style="font-size:23px;"></i></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <form method="POST" action="{% url 'cyber_sec' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="diff_srv_rate"><strong>diff_srv_rate:</strong></label>
+                                <input type="text" class="form-control" name="diff_srv_rate" id="diff_srv_rate" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="dst_host_srv_diff_host_rate"><strong>dst_host_srv_diff_host_rate:</strong></label>
+                                <input type="text" class="form-control" name="dst_host_srv_diff_host_rate" id="dst_host_srv_diff_host_rate" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="dst_host_same_src_port_rate"><strong>dst_host_same_src_port_rate:</strong></label>
+                                <input type="text" class="form-control" name="dst_host_same_src_port_rate" id="dst_host_same_src_port_rate" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="srv_count"><strong>srv_count:</strong></label>
+                                <input type="text" class="form-control" name="srv_count" id="srv_count" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="protocol_type"><strong>protocol_type:</strong></label>
+                                <input type="text" class="form-control" name="protocol_type" id="protocol_type" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="dst_host_count"><strong>dst_host_count:</strong></label>
+                                <input type="text" class="form-control" name="dst_host_count" id="dst_host_count" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="logged_in"><strong>logged_in:</strong></label>
+                                <input type="text" class="form-control" name="logged_in" id="logged_in" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="dst_bytes"><strong>dst_bytes:</strong></label>
+                                <input type="text" class="form-control" name="dst_bytes" id="dst_bytes" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="count"><strong>count:</strong></label>
+                                <input type="text" class="form-control" name="count" id="count" required>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-warning btn-block mt-3 col-4"><strong>PREDICT</strong></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4">
+                    
+                    {% if prediction %}
+<div class="text-center">
+    {% if prediction == 'dos' %}
+    <h6><strong style="color: red; font-size:30px;">"Dos Attack"</strong></h6>
+    <img src="{% static 'user/img/dos.png' %}" alt="Dos Attack" style="max-width: 300px;">
+    {% elif prediction == 'normal' %}
+    <h6><strong style="color: green; font-size:30px;">"Normal"</strong></h6>
+    <img src="{% static 'user/img/normal.png' %}" alt="Normal" style="max-width: 300px;">
+    {% elif prediction == 'probe' %}
+    <h6><strong style="color: blue; font-size:30px;">"Probe Attack"</strong></h6>
+    <img src="{% static 'user/img/probe.png' %}" alt="Probe" style="max-width: 300px;">
+    {% elif prediction == 'r2l' %}
+    <h6><strong style="color: orange; font-size:30px;">"R2L Attack"</strong></h6>
+    <img src="{% static 'user/img/r2l.png' %}" alt="R2L Attack" style="max-width: 300px;">
+    {% elif prediction == 'u2r' %}
+    <h6><strong style="color: purple; font-size:30px;">"U2R Attack"</strong></h6>
+    <img src="{% static 'user/img/u2r.png' %}" alt="U2R Attack" style="max-width: 300px;">
+    {% else %}
+    <h6><strong style="color: grey; font-size:30px;">{{ prediction }}</strong></h6>
+    {% endif %}
+</div>
+{% endif %}
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service End -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if messages %}              
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <script>swal({
+            title: "Warning!",
+            text: "{{message}}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+        title: "Info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+    title: "Error :)",
+    text: "{{message}}",
+    icon: "error",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+    title: "Success :)",
+    text: "{{message}}",
+    icon: "success",
+    button: "OK",
+});
+</script>
+{% endif %}              
+{% endfor %} 
+{% endif %}
+
+<!-- Reservation Start -->
+
+
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                    allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                <a class="btn btn-link" href="{% url 'user_dashboard' %}">Dashboard</a>
+                <a class="btn btn-link" href="{% url 'user_profile' %}">My Profile</a>
+                
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>VVIT,Nambur</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 90325 99418</p>
+                
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                <p>09AM - 09PM</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'user/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'user/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'user/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'user/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'user/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'user/lib/tempusdominus/js/moment.min.js' %}"></script>
+<script src="{% static 'user/lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+<script src="{% static 'user/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'user/js/main.js' %}"></script>
+</body>
+
+</html>
